@@ -1,0 +1,4 @@
+- Primitive (boolean, numbers, undefined, null): constant space
+- String: O(n)
+- Array: O(n)
+- Object: O(n)

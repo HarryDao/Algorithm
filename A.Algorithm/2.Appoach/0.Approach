@@ -1,0 +1,42 @@
+A. UNDERSTAND THE PROBLEM:
+
+    I.e: Sum;
+
+    1. Restate problem
+    - implement addition
+
+    2. What are inputs?
+    - ints? float?
+    - what if large number?
+
+    3. What are outputs?
+    - int? float? string?
+
+    4. How can output be determined from inputs? Do I have enough information to solve it?
+
+
+    5. How should I label the important pieces of data that are part of the problem?
+
+
+B. CONCRETE EXAMPLES:
+
+    1. simple examples:
+
+    2. More complex examples:
+
+    3. When input is empty
+
+    4. When input is invalid
+
+    5. Edge cases
+
+
+C. BREAK IT DOWN:
+
+    write layout of all steps written in comments => in case cannot finish, examiner can see where it goes
+
+D. SOLVE / SIMPLIFY
+
+E. LOOK BACK / REFACTOR
+
+F. ASK ABOUT OTHER SOLUTIONS / APPROACHES

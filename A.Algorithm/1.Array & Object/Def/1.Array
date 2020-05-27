@@ -1,0 +1,11 @@
+var arr = [0, 1, 2];
+
+- push(), pop() -> O(1)
+- unshift(), shift() -> O(N)
+- arr[1] -> O(1)
+- searching -> O(N)
+
+- concat() -> O(N)
+- slice(), splice() -> 0(N)
+- sort() -> O(n * logn)
+- forEach(), map(), filter(), reduce() -> O(n);

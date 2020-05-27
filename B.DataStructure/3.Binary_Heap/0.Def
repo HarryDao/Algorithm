@@ -1,0 +1,13 @@
+Binary Heap is tree where:
+- each parent has at most 2 children
+- in Max Binary Heap: parent always > children 
+- in Min Binary Heap: parent always < children
+
+
+For every parent at n:
+- left is at 2n + 1
+- right is at 2n + 2
+
+For every child node at n :
+- parent is Math.floor((n - 1)/2)
+

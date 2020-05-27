@@ -1,0 +1,4 @@
+Binary Search Tree:
+- 1 node -> at most 2 nodes
+- In order
+=> all nodes on the left of node < node; all nodes on the right of node > node

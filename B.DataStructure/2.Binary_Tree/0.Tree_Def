@@ -1,0 +1,11 @@
+Tree is:
+- Parent -> children nodes relationship
+- No child -> parent, no child -> sibling
+
+Leaf: node with no children
+Edge:connection from 1 node to another
+
+Example:
+- DOM
+- Network routing
+- Folders in Operating System

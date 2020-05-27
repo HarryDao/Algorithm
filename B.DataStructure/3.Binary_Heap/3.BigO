@@ -1,0 +1,7 @@
+Big O:
+- Insertion & Removal:
+    O(logN) VS O(NlogN) (of array)
+
+=> VERY GOOD for Insertion & Removal
+
+- NOT GOOD for searching (use Binary Tree instead)

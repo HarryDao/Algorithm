@@ -1,0 +1,25 @@
+Properties:
+- Head
+- Tail
+- Length
+
+VS Array
+- Linked List:
+    + no index
+    + connected via nodes with "next" pointer
+    + random access not allowed
+
+- Array:
+    + indexed in order
+    + insert/delete can be expensive
+    + can quickly access at specific index
+
+
+BigO() VS ARRAY:
+(+) - unshift(): O(1) VS Array: O(n)
+(+) - shift(): O(1) VS Array: O(n)
+(-) - pop(): O(n) VS Array: O(1)
+(=) - push(): O(1) === Array: O(1)
+(-) - access(): O(n) VS Array: O(1)
+(=) - search: O(n) === Array: O(n)
+

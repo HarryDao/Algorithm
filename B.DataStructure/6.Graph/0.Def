@@ -1,0 +1,48 @@
+Graph:
+    - Vertex: node
+    - Edge: connect between 2 nodes
+    - Undirected (2 way connection edge) VS Directed (arrow edge, 1 way connection edge);
+    - Unwieghted (all connection edge have same values) VS Weighted (each connection edge has different value)
+
+Adjacency Matrix:
+
+    A  B  C  D
+A   0  1  0  1
+B   1  0  1  0
+C   0  1  0  1
+D   1  0  1  0
+
+
+Adjacency List:
+[
+    [2, 5],
+    [3, 4],
+    [5, 4],
+    [3, 2],
+    [4, 1]
+]
+
+{
+    A: ["B"],
+    B: ["A", "C"],
+    C: ["B"]
+}
+
+
+Adjacency List:
+    - Take up LESS space
+    - FASTER to iterate over all edges
+    - SLOWER when look up a specific edge
+
+Adjacency Matrix:
+    - More space
+    - SLOWER to iterate all edges
+    - FASTER when look up a specific edge
+
+BIG 0: List VS Matrix:
+- Add vertex: O(1) VS O(V ^ 2)
+- Add edge: O(1) VS O(1)
+- Remove vertex: O(|V| + |E|) VS| O(V ^ 2);
+- Remove edge: O(E) VS O(1)
+- Query: O(V + E) VS O(1)
+- Storage: O (V + E) VS O (V ^2)

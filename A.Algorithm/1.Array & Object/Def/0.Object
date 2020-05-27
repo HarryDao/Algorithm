@@ -1,0 +1,10 @@
+var obj = { a: 1, b: 2 }
+
+- obj[c] = 3; -> O(1)
+- obj.hasOwnProperty('a'); -> O(1)
+- delete obj[a]; -> O(1);
+- searching for value -> O(N);
+
+- Object.values(obj) -> O(N);
+- Object.keys(obj) -> O(N);
+- Object.entries(obj) -> O(N);

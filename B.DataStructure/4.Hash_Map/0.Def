@@ -1,0 +1,34 @@
+1. Hash Map:
+- store key-value pairs
+- like array, but no order
+- UNLIKE array: hash_map is fast for all:
+    + finding
+    + adding
+    + removing
+    
+
+2. Collion handling: 2 methods
+
+arr = [undefined, undefined, [green, '#444'], undefined];
+
+- Separate Chaining:
+
+salmon -> 1
+blue -> 1
+
+=> arr = [undefined, [[salmon, '#000'], [blue, '#111']], [green, '#444'], undefined]
+
+
+- Linear probing
+
+salmon -> 1
+blue -> 1 => next available slot
+
+=> arr = [undefined, [salmon, '#000'], [green, '#444'], [blue, '#111']]
+
+
+3. BIG O:
+
+Insert: O(1) (average) / O(N) (worst case)
+Deletion: O(1) (average) / O(N) (worst case)
+Access: O(1) (average) / O(N) (worst case)

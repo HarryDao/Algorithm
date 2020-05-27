@@ -1,0 +1,15 @@
+Stack:
+    - Last-In-First-Out
+    - Big(O): 
+        + Inserting: O(1)
+        + Removal: O(1)
+        + Searching: O(n)
+        + Access: O(n)
+
+Queue:
+    - First-In-First-Out
+    - Big(O): 
+        + Inserting: O(1)
+        + Removal: O(1)
+        + Searching: O(n)
+        + Access: O(n)
