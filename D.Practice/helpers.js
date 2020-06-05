@@ -73,6 +73,7 @@ class GeneralPriorityQueue {
             this.isMinPQ = isMinPQ;
         }
         this.list = [];
+        this.length = 0;
     }
 
     swap(i, j) {
@@ -94,8 +95,14 @@ class GeneralPriorityQueue {
         }
     }
 
+    peek() {
+        if (!this.length) return null;
+        return this.list[0];
+    }
+
     enqueue(priority, data) {
-        this.list.push({ data, priority });
+        const newNode = new GeneralPriorityQueueNode(priority, data);
+        this.list.push(newNode);
         let i = this.list.length - 1;
 
         while (i > 0) {
@@ -105,11 +112,17 @@ class GeneralPriorityQueue {
             this.swap(i, parentIndex);
             i = parentIndex;
         }
+        this.length += 1;
     }
 
     dequeue(fullData = false) {
+        if (!this.list.length) return null;
+
         this.swap(0, this.list.length - 1);
+        
         const node = this.list.pop();
+        this.length -= 1;
+
         const length = this.list.length;
 
         if (!this.list.length) {
@@ -139,6 +152,13 @@ class GeneralPriorityQueue {
         }
 
         return fullData ? node : node.data;
+    }
+}
+
+class GeneralPriorityQueueNode {
+    constructor(priority, data) {
+        this.priority = priority;
+        this.data = data === undefined ? priority : data;
     }
 }
 
@@ -246,10 +266,239 @@ function testBST(appliedFn, array) {
     return appliedFn(tree.head);
 }
 
+class Queue {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+        this.length = 0;
+        
+    }
+
+    enqueue(val) {
+        const node = new QueueNode(val);
+
+        if (!this.head) {
+            this.head = node;
+            this.tail = node;
+        } else {
+            this.tail.next = node;
+            this.tail = node;
+        }
+
+        this.length ++;
+        return this;
+    }
+
+    dequeue() {
+        if (!this.head) return null;
+        
+        const node = this.head;
+        this.head = this.head.next;
+        this.length -= 1;
+
+        return node.val;
+    }
+}
+
+class QueueNode {
+    constructor(val) {
+        this.val = val;
+        this.next = null;
+    }
+}
+
+
+
+
+// Given the following tree [1,2,2,3,3,null,null,4,4]:
+
+//        1
+//       / \
+//      2   2
+//     / \
+//    3   3
+//   / \
+//  4   4
+
+class BinaryTreePlain {
+    constructor() {
+        this.head = undefined;
+    }
+
+    add(val) {
+        const newNode = val !== null ? new BinaryTreePlainNode(val) : null;
+        
+        if (!this.head) {
+            this.head = newNode;
+            return this;
+        }
+
+        let nodes = [this.head];
+
+        while (nodes.length) {
+            const next = [];
+            for (let node of nodes) {
+                if (!node) continue;
+
+                if (node.left === undefined) {
+                    node.left = newNode;
+                    return this;
+                } else {
+                    next.push(node.left);
+                }
+
+                if (node.right === undefined) {
+                    node.right = newNode;
+                    return this;
+                } else {
+                    next.push(node.right);
+                }
+            }
+            nodes = next;
+        }
+    }
+
+    adds(array) {
+        array.forEach((num) => {
+            this.add(num);
+        });
+    }
+}
+
+class BinaryTreePlainNode {
+    constructor(val, left, right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}
+
+class SelfBalancingBST {
+    constructor() {
+        this.head = null;
+    }
+
+    enqueue(val) {
+        const newNode = new SelfBalancingBSTNode(val);
+
+        if (!this.head) {
+            this.head = newNode;
+            return this;
+        }
+
+        let node = this.head;
+        const track = [];
+
+        while (node) {
+            if (node.val === val) {
+                return this;
+            } else if (node.val < val) {
+                track.push({ node, toRight: true });
+                if (!node.right) {
+                    node.right = newNode;
+                }
+                node = node.right;
+            } else {
+                track.push({ node, toRight: false });
+                if (!node.left) {
+                    node = newNode;
+                }
+                node = node.left;
+            }
+        }
+
+        track.forEach(({ node, toRight }) => {
+            if (toRight) {
+                node.rightLevel += 1;
+            } else {
+                node.leftLevel += 1;
+            }
+        })
+
+        for (let index = track.length - 2; index >= 0; index --) {
+            const { node, toRight } = track[index];
+
+            if (toRight) {
+                node.rightLevel += 1;
+            } else {
+                node.leftLevel += 1;
+            }
+
+            if (node.rightLevel > node.leftLevel + 1) {
+                const parent = track[index - 1];
+                const child = track[index + 1];
+
+                if (parent) {
+                    const direction = parent.toRight ? 'right' : 'left';
+                    parent.node.right = child;
+                    parent.node.rightLevel -= 1;
+
+                    child.left = node;
+                    child.left =
+
+                    node.right = null;
+                }
+
+            }
+        }
+
+        console.log('track:', track);
+
+        return this;
+    }
+}
+
+function SelfBalancingBSTNode(val) {
+    this.val = val;
+    this.leftLevel = 0;
+    this.rightLevel = 0;
+    this.right = null;
+    this.left = null;
+}
+
+function ListNode(val) {
+    this.val = val;
+    this.next = null;
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null;
+        this.tail = null;
+    }
+
+    add(val) {
+        const newNode = new ListNode(val);
+
+        if (!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            this.tail.next = newNode;
+            this.tail = this.tail.next;
+        }
+
+        return this;
+    }
+
+    adds(vals) {
+        if (!Array.isArray(vals)) {
+            vals = [vals];
+        }
+
+        for (let val of vals) {
+            this.add(val);
+        }
+    }
+}
+
 module.exports = {
+    Queue,
     MinPriorityList,
     GeneralPriorityQueue,
     BinaryTree,
     BinaryTreeNode,
     testBST,
+    BinaryTreePlain,
+    LinkedList
 }

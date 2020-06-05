@@ -69,19 +69,19 @@ console.log(subarraySum(
     [1, 1, 1], 2
 )); // 2
 
-console.log(subarraySum(
-    [1,2,1,2,1], 3
-)); // 4
+// console.log(subarraySum(
+//     [1,2,1,2,1], 3
+// )); // 4
 
-console.log(subarraySum(
-    [-1,-1, 1], 0
-)); // 1
+// console.log(subarraySum(
+//     [-1,-1, 1], 0
+// )); // 1
 
-console.log(subarraySum(
-    [-92,-63,75,-86,-58,22,31,-16,-66,-67,420], 100
-)); // 1
+// console.log(subarraySum(
+//     [-92,-63,75,-86,-58,22,31,-16,-66,-67,420], 100
+// )); // 1
 
 
-console.log(subarraySum(
-    [3, 4, 7, 2, -3, 1, 4, 2], 7
-)); // 4
+// console.log(subarraySum(
+//     [3, 4, 7, 2, -3, 1, 4, 2], 7
+// )); // 4
