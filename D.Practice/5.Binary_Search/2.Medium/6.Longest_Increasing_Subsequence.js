@@ -88,7 +88,7 @@ var lengthOfLISBetter = function(nums) {
             result.push(num);
         } else {
             let start = 0;
-            while(start <= result.length) {
+            while(start < result.length) {
                 if (result[start] >= num) break;
                 start += 1;
             }

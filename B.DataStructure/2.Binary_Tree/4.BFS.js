@@ -126,6 +126,28 @@ class BST {
         traverse(this.root);
         return data;
     }
+
+    DFSInOrderIterative() {
+        if (!this.root) return [];
+        const stack = [];
+        const result = [];
+        let currentNode = this.root;
+
+        while (currentNode || stack.length) {
+            while (currentNode) {
+                stack.push(currentNode);
+                currentNode = currentNode.left;
+            }
+
+            if (stack.length) {
+                const last = stack.pop();
+                result.push(last.val);
+                currentNode = last.right;
+            }
+        }
+
+        return result;
+    }
 }
 
 const tree = new BST();

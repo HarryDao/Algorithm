@@ -24,7 +24,36 @@ class LinkedList {
     }
 }
 
+const testLinkedList = function(toPrint = true) {
+    return function(fn, inputs, ...args) {
+        const list = new LinkedList();
+
+        if (!Array.isArray(inputs)) {
+            inputs = [inputs];
+        }
+    
+        for (const input of inputs) {
+            list.add(input);
+        }
+    
+        let node = fn(list.head, ...args);
+    
+        if (!toPrint) return node;
+
+        let limit = 0;
+        while (node) {
+            if (++limit > 10) {
+                console.log('LIMITED');
+                break;
+            }
+            console.log("node:", node.val);
+            node = node.next;
+        }
+    };
+}
+
 module.exports = {
     ListNode,
     LinkedList,
+    testLinkedList,
 }

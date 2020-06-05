@@ -142,7 +142,114 @@ class GeneralPriorityQueue {
     }
 }
 
+class BinaryTree {
+    constructor() {
+        this.root = null;
+    }
+
+    add(val, data) {
+        if (val === null) return this;
+
+        const newNode = new BinaryTreeNode(val, data);
+
+        if (!this.root) {
+            this.root = newNode;
+            return this;
+        }
+
+        let node = this.root;
+
+        while (node) {
+            if (node.val === val) {
+                return this;
+            } else if (node.val < val) {
+                if (!node.right) {
+                    node.right = newNode;
+                }
+                node = node.right;
+            } else {
+                if (!node.left) {
+                    node.left = newNode;
+                }
+                node = node.left;
+            }
+        }
+
+        return this;
+    }
+
+    search(val, returnPath = false) {
+        if (!this.root) return null;
+        
+        let node = this.root;
+        const paths = [];
+
+        while (node) {
+            if (returnPath) paths.push(node);
+
+            if (node.val === val) {
+                return returnPath ? paths : node;
+            } else if (node.val < val) {
+                node = node.right;
+            } else {
+                node = node.left;
+            }
+        }
+
+        return null;
+    }
+
+    traverseInOrderIterative(fn = false) {
+        if (!this.root) return;
+
+        const stack = [];
+        const result = fn ? null : [];
+        let currentNode = this.root;
+        
+        while (currentNode || stack.length) {
+            while (currentNode) {
+                stack.push(currentNode);
+                currentNode = currentNode.left;
+            }
+
+            if (stack.length) {
+                const last = stack.pop();
+
+                if (fn)  {
+                    fn(last.val);
+                } else {
+                    result.push(last.val);
+                }
+
+                currentNode = last.right;
+            }
+        }
+
+        if (!fn) return result;
+    }
+}
+
+class BinaryTreeNode {
+    constructor(val, data) {
+        this.val = val;
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+function testBST(appliedFn, array) {
+    const tree = new BinaryTree();
+    for (const item of array) {
+        tree.add(item);
+    }
+    return appliedFn(tree.head);
+}
+
 module.exports = {
     MinPriorityList,
     GeneralPriorityQueue,
+    BinaryTree,
+    BinaryTreeNode,
+    testBST,
 }
