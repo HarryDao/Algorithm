@@ -16,25 +16,20 @@
  * @param {number} target
  * @return {number[]}
  */
-var twoSum = function(nums, target) {
-    const complements = {};
-    
-    for (let index = 0; index < nums.length; index ++) {
-        const num = nums[index];
-        
-        if (complements.hasOwnProperty(num)) {
-            return [complements[num], index];
-        }
+function twoSum(nums: number[], target: number): number[] {
+    const map: {[key: string] : number} = {};
 
-        complements[target - num] = index;
+    for (let index = 0, length = nums.length; index < length; index += 1) {
+        const num = nums[index];
+
+        if (map.hasOwnProperty(num)) {
+            return [map[num], index];    
+        } else {
+            map[target - num] = index;
+        }
     }
 
-    return false;
+    return [-1, -1];
 };
 
-// time: O(n)
-// space: O(n)
-
-// note: brute force -> time O(n2); space O(1)
-
-console.log(twoSum([2,7,11,15], 18));
+console.log(twoSum([2,7,11,15], 19));
